@@ -40,6 +40,7 @@ export const Navbar = () => {
                   <LogOut className="h-4 w-4" />
                   <span>Logout</span>
                 </button>
+                <div id="google_translate_element" className="ml-2 scale-90 origin-right"></div>
               </>
             ) : (
               <>
@@ -79,6 +80,7 @@ export const Navbar = () => {
                 <LogOut className="h-4 w-4" />
                 <span>Logout</span>
               </button>
+              <div id="google_translate_element" className="px-3 py-2"></div>
             </div>
           ) : (
             <div className="flex flex-col space-y-2">

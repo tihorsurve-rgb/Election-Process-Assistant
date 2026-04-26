@@ -65,11 +65,28 @@ export const BoothFinder = () => {
 
         {/* Map Area */}
         <div className="lg:grid-cols-2 lg:col-span-2">
-          <div className="bg-white p-2 rounded-2xl shadow-md border border-gray-100 h-[600px] overflow-hidden">
-            {/* 
-               IMPORTANT: In a production app, the key would be in .env 
-               and the user would have restricted it to their domain.
-            */}
+          <div className="bg-white p-2 rounded-2xl shadow-md border border-gray-100 h-[600px] overflow-hidden relative">
+            {!import.meta.env.VITE_GOOGLE_MAPS_KEY && (
+              <div className="absolute inset-0 bg-slate-50 flex flex-col items-center justify-center p-8 text-center z-10">
+                <div className="bg-white p-4 rounded-full shadow-sm mb-4">
+                  <MapIcon className="h-10 w-10 text-slate-400" />
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">Map Preview Restricted</h4>
+                <p className="text-slate-600 mb-6 max-w-md">
+                  To view the interactive map directly here, a Google Maps API Key is required. 
+                  You can still find booths by opening Google Maps directly.
+                </p>
+                <a 
+                  href={`https://www.google.com/maps/search/Polling+Booths+near+${encodeURIComponent(searchQuery || 'India')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-navy-900 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-navy-800 transition-colors"
+                >
+                  Open in Google Maps
+                  <Search className="h-4 w-4" />
+                </a>
+              </div>
+            )}
             <iframe
               title="Google Maps Booth Finder"
               width="100%"
