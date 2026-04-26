@@ -20,9 +20,11 @@ export const geminiService = {
       throw new Error("Gemini API key is missing. Please add VITE_GEMINI_API_KEY to your .env file.");
     }
 
+    const modelName = "gemini-2.5-flash";
+    
     try {
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.5-flash",
+        model: modelName,
         systemInstruction: SYSTEM_INSTRUCTION
       });
 
@@ -32,9 +34,9 @@ export const geminiService = {
 
       const result = await chat.sendMessage(message);
       return result.response.text();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Gemini API Error:", error);
-      throw new Error("Failed to get response from the assistant. Please try again.");
+      throw new Error(`Gemini API Error: ${error.message || 'Unknown error'}`);
     }
   }
 };

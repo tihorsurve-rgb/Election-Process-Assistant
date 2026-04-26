@@ -1,0 +1,9 @@
+.git
+.gitignore
+.dockerignore
+node_modules
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example

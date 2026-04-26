@@ -17,9 +17,9 @@ import { About } from './pages/About';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen flex flex-col bg-slate-50">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow flex flex-col relative">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
@@ -37,10 +37,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        
-        <footer className="bg-navy-900 text-slate-300 py-6 text-center text-sm">
-          <p>Disclaimer: This assistant is for educational guidance only. For official information, please refer to the Election Commission of India (ECI).</p>
-        </footer>
       </div>
     </Router>
   );
