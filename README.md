@@ -17,6 +17,9 @@ The Indian electoral process is vast and sometimes complex for first-time voters
 This project is built following industry best practices and deep integration with the Google ecosystem:
 - **CI/CD Pipelines**: Automated testing and deployment workflows using **GitHub Actions**.
 - **Google Cloud Run**: Containerized deployment for scalable, serverless hosting.
+- **Firebase Authentication**: Integrated **Google Sign-In** for secure, seamless user onboarding.
+- **Firebase Hosting**: Configuration ready for ultra-fast global content delivery.
+- **Firebase Firestore**: Architecture ready for real-time data persistence.
 - **Google Gemini API**: Advanced prompt engineering with robust safety guardrails.
 - **Google Maps Platform**: Interactive "Booth Finder" integration for location-based services.
 - **Google Analytics**: Real-time user tracking and engagement metrics.

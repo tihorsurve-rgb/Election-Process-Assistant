@@ -1,4 +1,6 @@
 import { User } from '../types';
+import { auth, googleProvider } from './firebase';
+import { signInWithPopup, signOut as firebaseSignOut } from 'firebase/auth';
 
 const USERS_KEY = 'election_app_users';
 const CURRENT_USER_KEY = 'election_app_current_user';
@@ -52,5 +54,25 @@ export const authService = {
 
   logout(): void {
     localStorage.removeItem(CURRENT_USER_KEY);
+    firebaseSignOut(auth).catch(console.error);
+  },
+
+  async loginWithGoogle(): Promise<User> {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const firebaseUser = result.user;
+      
+      const user: User = {
+        id: firebaseUser.uid,
+        name: firebaseUser.displayName || 'Google User',
+        email: firebaseUser.email || '',
+      };
+
+      this.login(user);
+      return user;
+    } catch (error: any) {
+      console.error("Google login failed:", error);
+      throw new Error(error.message || "Failed to login with Google");
+    }
   }
 };
