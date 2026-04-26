@@ -1,72 +1,82 @@
 # Election Process Education Assistant – India
 
+A civic technology initiative designed to educate Indian citizens about the electoral process using artificial intelligence. This platform provides simple, neutral, and factual answers to voting queries, helping to empower every voter with knowledge.
+
+**Live Demo:** [https://election-assistant-360254301601.asia-south1.run.app/](https://election-assistant-360254301601.asia-south1.run.app/)
+
 ## Problem Statement
-The Indian electoral process is vast and sometimes complex for first-time voters and the general public. There is a need for a simple, accessible, and neutral platform where citizens can quickly get answers about voter registration, the election timeline, EVMs, and the Model Code of Conduct without political bias.
+The Indian electoral process is vast and sometimes complex for first-time voters and the general public. There is a need for a simple, accessible, and neutral platform where citizens can quickly get answers about voter registration, the election timeline, EVMs, and the Model Code of Conduct without political bias or influence.
 
 ## Approach and Logic
-This application is a civic technology initiative that leverages AI to provide an interactive educational experience. 
-- It uses a React frontend to provide a clean, accessible interface.
-- It utilizes the Google Gemini API with a strict system prompt (guardrail) to ensure the AI only answers questions related to the Indian election process and remains completely neutral and non-partisan.
-- Instead of a traditional backend, it uses the browser's `localStorage` to simulate authentication and store chat histories, ensuring complete privacy and zero backend setup requirements for local testing.
+- **AI-Powered Education:** Utilizes the Google Gemini API to provide interactive, real-time guidance.
+- **Strict Guardrails:** Implements robust system instructions to ensure the AI remains non-partisan, neutral, and refuses to answer non-election related or political opinion questions.
+- **Privacy-First (No Backend):** Uses the browser's `localStorage` to simulate authentication and store chat histories. This ensures user privacy as no personal data or conversations are stored on a central server.
+- **Responsive & Accessible:** Built with a mobile-first approach using React and Tailwind CSS for a premium, accessible experience across all devices.
 
 ## Features
-- **AI Assistant:** Ask questions about the election process, EVMs, timelines, and more.
-- **Strict Guardrails:** The AI will refuse to answer non-election related questions or political opinion questions.
-- **Local Authentication:** Sign up and log in using local storage.
-- **Chat History:** Your conversations are saved locally so you can return to them later.
-- **Educational Guides:** Dedicated pages for Election Timeline, Voter Guide, and FAQs.
-- **Quick Questions:** Predefined prompts to help users get started quickly.
+- **AI Assistant:** A dedicated chat interface for election queries with automatic scrolling and history management.
+- **Interactive Guides:**
+  - **Election Timeline:** Visual representation of election phases.
+  - **Voter Guide:** Comprehensive information on registration and required documents.
+  - **FAQs:** Quick answers to common voting questions.
+- **Quick Prompts:** Predefined questions to help users explore the election process immediately.
+- **Clean UI/UX:** A modern, premium design with smooth transitions and interactive feature cards.
 
 ## Technologies Used
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- Google Gemini API (`@google/generative-ai`)
-- React Router
-- Lucide React (Icons)
-- Vitest (Testing)
-
-## Security Considerations
-- **No Backend Data Collection:** By using `localStorage`, no user data or chat history is transmitted to a central database.
-- **API Key Protection:** The Gemini API key should be provided via environment variables (`.env`) and is never hardcoded in the repository.
-- **Prompt Guardrails:** The system prompt explicitly instructs the AI to remain neutral, factual, and refuse unrelated queries.
-
-## Accessibility Considerations
-- Responsive, mobile-first design.
-- High contrast colors (navy, white, dark gray).
-- Clear, simple English text (designed to be easily translatable to Hindi in the future).
-- Semantic HTML structure.
-
-## Assumptions Made
-- The user has access to a modern web browser that supports `localStorage`.
-- The user has a valid Gemini API key.
-- The information provided by the AI is for educational guidance only, and users are expected to verify details with the official Election Commission of India (ECI) website.
+- **Frontend:** React 19, TypeScript, Tailwind CSS 4
+- **Build Tool:** Vite 8
+- **AI Engine:** Google Gemini API (`@google/generative-ai`)
+- **Icons:** Lucide React
+- **Routing:** React Router 7
+- **Deployment:** Google Cloud Run (Containerized via Docker + Nginx)
 
 ## Setup Instructions
 
-1. **Clone the repository** (if applicable) or navigate to the project directory.
+### Prerequisites
+- Node.js (v18+)
+- A Google Gemini API Key (Get it from [Google AI Studio](https://aistudio.google.com/))
+
+### Local Development
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tihorsurve-rgb/Election-Process-Assistant.git
+   cd Election-Process-Assistant
+   ```
 
 2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. **Environment Variables:**
-   - Copy the `.env.example` file to a new file named `.env`.
-   - Open `.env` and add your Gemini API Key:
+3. **Configure Environment Variables:**
+   - Copy `.env.example` to `.env`.
+   - Add your Gemini API Key to the `.env` file:
      ```env
      VITE_GEMINI_API_KEY=your_actual_api_key_here
      ```
 
-4. **Run the application locally:**
+4. **Run the app:**
    ```bash
    npm run dev
    ```
-   Open your browser and navigate to the URL provided in the terminal (usually `http://localhost:5173`).
+   Access the app at `http://localhost:5173`.
 
-## How to Test
-Basic unit tests are provided using Vitest.
+### Building for Production
 ```bash
-npm run test
+npm run build
 ```
-*(Note: To test the Gemini guardrails effectively, you should test manually via the UI by asking political or non-election questions to ensure it refuses to answer them.)*
+The production-ready files will be in the `dist` folder.
+
+## Deployment (Cloud Run)
+The project is containerized using Docker and served via Nginx. To deploy to Google Cloud Run:
+```bash
+gcloud run deploy election-assistant --source . --project YOUR_PROJECT_ID --region asia-south1 --allow-unauthenticated
+```
+
+## Security & Ethics
+- **API Security:** The project uses `.gitignore` to prevent sensitive `.env` files from being committed.
+- **Neutrality:** The AI model is strictly instructed to avoid political bias.
+- **ECI Sources:** Users are always reminded to verify final official information from the **Election Commission of India (ECI)**.
+
+## License
+This project is for educational and civic awareness purposes.
