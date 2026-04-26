@@ -33,3 +33,6 @@ dist-ssr
 # Build logs
 build.log
 build_fail_*.log
+
+# Test scripts
+test_api.js
