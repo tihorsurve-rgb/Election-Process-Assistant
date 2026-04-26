@@ -47,16 +47,19 @@ export const Landing = () => {
 
           <div className="grid md:grid-cols-3 gap-10">
             <FeatureCard 
+              to="/about"
               icon={<Shield className="h-10 w-10 text-navy-600" />}
               title="Neutral & Factual"
               description="Get unbiased information strictly based on the election process without any political influence."
             />
             <FeatureCard 
+              to="/guide"
               icon={<BookOpen className="h-10 w-10 text-saffron-500" />}
               title="Step-by-Step Guides"
               description="From registering to vote to understanding EVMs, we break down complex processes."
             />
             <FeatureCard 
+              to="/assistant"
               icon={<Clock className="h-10 w-10 text-green-600" />}
               title="24/7 AI Assistance"
               description="Have a question? Our AI assistant is ready to provide instant educational guidance anytime."
@@ -68,12 +71,14 @@ export const Landing = () => {
   );
 };
 
-const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-  <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-    <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-sm mb-6">
-      {icon}
+const FeatureCard = ({ icon, title, description, to }: { icon: React.ReactNode, title: string, description: string, to: string }) => (
+  <Link to={to} className="block group">
+    <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm group-hover:shadow-md group-hover:border-slate-200 transition-all h-full">
+      <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
     </div>
-    <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-    <p className="text-gray-600 leading-relaxed">{description}</p>
-  </div>
+  </Link>
 );
