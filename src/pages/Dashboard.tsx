@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MessageSquare, Calendar, BookOpen, HelpCircle } from 'lucide-react';
+import { MessageSquare, Calendar, BookOpen, HelpCircle, MapPin } from 'lucide-react';
 import { authService } from '../services/authService';
 
 export const Dashboard = () => {
@@ -13,7 +13,7 @@ export const Dashboard = () => {
         <p className="text-gray-600 mt-2">What would you like to learn about the Indian election process today?</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         <DashboardCard 
           to="/assistant"
           icon={<MessageSquare className="h-8 w-8 text-white" />}
@@ -48,6 +48,15 @@ export const Dashboard = () => {
           description="Quick answers to common questions about EVMs, NOTA, and more."
           color="bg-purple-600"
           hoverColor="hover:bg-purple-700"
+        />
+
+        <DashboardCard 
+          to="/booths"
+          icon={<MapPin className="h-8 w-8 text-white" />}
+          title="Booth Finder"
+          description="Find your nearest polling station using Google Maps."
+          color="bg-red-600"
+          hoverColor="hover:bg-red-700"
         />
       </div>
     </div>

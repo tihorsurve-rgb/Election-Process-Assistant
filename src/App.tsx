@@ -13,6 +13,7 @@ import { Timeline } from './pages/Timeline';
 import { VoterGuide } from './pages/VoterGuide';
 import { FAQ } from './pages/FAQ';
 import { About } from './pages/About';
+import { BoothFinder } from './pages/BoothFinder';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
             <Route path="/guide" element={<ProtectedRoute><VoterGuide /></ProtectedRoute>} />
             <Route path="/faq" element={<ProtectedRoute><FAQ /></ProtectedRoute>} />
+            <Route path="/booths" element={<ProtectedRoute><BoothFinder /></ProtectedRoute>} />
             
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />

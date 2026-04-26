@@ -30,6 +30,7 @@ export const Navbar = () => {
               <>
                 <Link to="/dashboard" className="hover:text-saffron-300 px-3 py-2 rounded-md transition-colors">Dashboard</Link>
                 <Link to="/assistant" className="hover:text-saffron-300 px-3 py-2 rounded-md transition-colors">AI Assistant</Link>
+                <Link to="/booths" className="hover:text-saffron-300 px-3 py-2 rounded-md transition-colors">Find Booths</Link>
                 <span className="text-gray-300 mx-2">|</span>
                 <span className="text-sm">Hi, {user.name}</span>
                 <button 
@@ -70,6 +71,7 @@ export const Navbar = () => {
             <div className="flex flex-col space-y-2">
               <Link to="/dashboard" onClick={() => setIsOpen(false)} className="hover:bg-navy-700 px-3 py-2 rounded-md">Dashboard</Link>
               <Link to="/assistant" onClick={() => setIsOpen(false)} className="hover:bg-navy-700 px-3 py-2 rounded-md">AI Assistant</Link>
+              <Link to="/booths" onClick={() => setIsOpen(false)} className="hover:bg-navy-700 px-3 py-2 rounded-md">Find Booths</Link>
               <button 
                 onClick={() => { handleLogout(); setIsOpen(false); }}
                 className="flex items-center space-x-2 text-red-400 hover:bg-navy-700 px-3 py-2 rounded-md w-full text-left"
